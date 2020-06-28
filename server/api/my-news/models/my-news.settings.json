@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "my_news",
+  "info": {
+    "name": "MyNews"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Header": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "PreviewImage": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false
+    },
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "Content": {
+      "type": "richtext",
+      "required": true,
+      "minLength": 10
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/my-commentaries",
+      "handler": "my-commentary.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/my-commentaries/count",
+      "handler": "my-commentary.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/my-commentaries/:id",
+      "handler": "my-commentary.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/my-commentaries",
+      "handler": "my-commentary.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/my-commentaries/:id",
+      "handler": "my-commentary.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/my-commentaries/:id",
+      "handler": "my-commentary.delete",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "my_commentaries",
+  "info": {
+    "name": "MyCommentary"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true
+  },
+  "attributes": {
+    "Text": {
+      "type": "richtext",
+      "required": true,
+      "maxLength": 300
+    }
+  }
+}
