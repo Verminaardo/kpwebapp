@@ -3,17 +3,17 @@ import { registration } from './actions';
 
 const initialState = {
    error: null,
-   isProcessed: false
+   isSuccess: false
 };
 
 export default handleActions(
    {
       [registration.request]: (state) => ({
          ...state,
-         isProcessed: true
       }),
       [registration.success]: (state, action) => ({
-         ...initialState
+         ...initialState,
+         isSuccess: true
       }),
       [registration.error]: (state, action) => ({
          ...initialState,

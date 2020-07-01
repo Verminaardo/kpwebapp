@@ -1,4 +1,4 @@
-import {isRegistrationProcessed} from '../../common/store/selectors';
+import {isRegistrationSuccess} from '../../common/store/selectors';
 
 import React, {Component} from 'react';
 import {Button} from '../buttons';
@@ -33,7 +33,7 @@ class RegistrationModal extends Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      if (this.props.registrationProcessed && !nextProps.registrationProcessed) {
+      if (!this.props.isRegistrationSuccess && nextProps.isRegistrationSuccess) {
          this.props.closeModal()
       }
    }
@@ -58,6 +58,7 @@ class RegistrationModal extends Component {
                             id="inputLogin"
                             value={login}
                             placeholder="Введите логин..."
+                            required
                             onChange={(e) => this.onChangeRegistrationFormHandler && this.onChangeRegistrationFormHandler(e.target.value, "login")}
                      />
                   </div>
@@ -68,6 +69,7 @@ class RegistrationModal extends Component {
                             id="inputEmail"
                             value={email}
                             placeholder="Введите адресс эл. почты..."
+                            required
                             onChange={(e) => this.onChangeRegistrationFormHandler && this.onChangeRegistrationFormHandler(e.target.value, "email")}
                      />
                   </div>
@@ -78,6 +80,7 @@ class RegistrationModal extends Component {
                             id="inputPassword"
                             value={password}
                             placeholder="Введите пароль..."
+                            required
                             onChange={(e) => this.onChangeRegistrationFormHandler && this.onChangeRegistrationFormHandler(e.target.value, "password")}
                      />
                   </div>
@@ -103,7 +106,7 @@ class RegistrationModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-   registrationProcessed: isRegistrationProcessed(state)
+   isRegistrationSuccess: isRegistrationSuccess(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
