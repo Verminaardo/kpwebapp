@@ -12,6 +12,7 @@ import LandingPage from "./landingPage/LandingPage";
 import NewsViewListContainer from "./myblog/containers/NewsViewListContainer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
+import NewsDetail from "./myblog/containers/NewsDetail";
 
 class App extends Component {
    constructor(props, context) {
@@ -39,6 +40,9 @@ class App extends Component {
                <Fragment>
                   <Route exact path="/" component={LandingPage} />
                   <Route exact path="/news" render={() => <NewsViewListContainer user={this.props.currentUser}/>}/>
+                  <Route path="/news/:newsDetailId"
+                     component={NewsDetail}
+                  />
                </Fragment>
             </Switch>
             <NotificationContainer/>

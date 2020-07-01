@@ -19,12 +19,12 @@ const store = config.store
 export const persistor = config.persistor
 
 render(
-   <BrowserRouter>
-      <Provider store={store}>
-         <PersistGate loading={null} persistor={persistor}>
+   <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+         <BrowserRouter>
             <Route path="/" component={App}/>
-         </PersistGate>
-      </Provider>
-   </BrowserRouter>,
+         </BrowserRouter>
+      </PersistGate>
+   </Provider>,
    document.getElementById('root')
 );

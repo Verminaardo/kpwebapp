@@ -1,8 +1,8 @@
 import {createActions} from 'redux-actions';
 import {loadActions} from '../../../common/utils/constants';
 
-export const {doctor} = createActions({
-   DOCTOR: {
+export const {newsDetail} = createActions({
+   NEWS_DETAIL: {
       ...loadActions
    }
 });
