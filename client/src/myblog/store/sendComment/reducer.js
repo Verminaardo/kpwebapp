@@ -9,7 +9,7 @@ const initialState = {
 export default handleActions(
    {
       [sendCommentary.request]: (state) => ({
-         ...state,
+         ...initialState,
       }),
       [sendCommentary.success]: (state, action) => ({
          ...initialState,

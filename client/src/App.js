@@ -41,7 +41,7 @@ class App extends Component {
             <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} user={this.props.currentUser}/>
             <Switch>
                <Fragment>
-                  <div className="row">
+                  <div className="row mr-1 ml-1">
                      <div className="col-md-8 ml-5 mr-5">
                         <Route exact path="/" component={LandingPage}/>
                         <Route exact path="/news"

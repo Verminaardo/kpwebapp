@@ -60,7 +60,7 @@ class NewsDetailContent extends Component {
                         </small>
                      </div>
                      <div>
-                        <p>{item.Text}</p>
+                        <pre>{item.Text}</pre>
                      </div>
                   </div>
                </div>)
@@ -92,7 +92,7 @@ class NewsDetailContent extends Component {
             {commentaryList}
             <hr className="mt-2 mb-4"/>
             {isAuth &&
-            <div>
+            <div className="mb-5">
                <form>
                   <div className="form-group">
                      <label htmlFor="exampleInputEmail1">Комментарий</label>
