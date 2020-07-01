@@ -1,17 +1,14 @@
-import {
-   getSpecialityList
-} from '../store/selectors';
+import { getNewsList } from '../store/selectors';
 
 import React, { Component } from 'react';
 import WithBreadcrumbs from "../../common/components/breadcrumbs/WithBreadcrumbs";
 import {bindActionCreators} from "redux";
-import * as hospitalService from '../store/service';
+import * as newsService from '../store/service';
 import {connect} from "react-redux";
-import SpecialityTable from "../components/SpecialityTable";
 import update from 'immutability-helper';
+import NewsList from "../components/NewsList";
 
-
-class SpecialityViewListContainer extends Component {
+class NewsViewListContainer extends Component {
    constructor(props) {
       super(props);
 
@@ -24,16 +21,17 @@ class SpecialityViewListContainer extends Component {
 
       this.onChangePage = this.onChangePage.bind(this);
       this.onChangeSizePerPage = this.onChangeSizePerPage.bind(this);
-      this.loadSpeciality = this.loadSpeciality.bind(this);
+      this.loadNews = this.loadNews.bind(this);
    }
 
    componentDidMount() {
-      this.loadSpeciality(this.state.pageable);
+      this.loadNews(this.state.pageable);
+      this.loadNews();
    }
 
-   loadSpeciality(pageable) {
-      const { requestSpecialityList } = this.props.hospitalService;
-      requestSpecialityList(pageable);
+   loadNews(pageable) {
+      const { requestNewsList } = this.props.newsService;
+      requestNewsList(pageable);
    }
 
    onChangePage(page) {
@@ -47,7 +45,7 @@ class SpecialityViewListContainer extends Component {
          }
       });
       this.setState(newState);
-      this.loadSpeciality(newState.pageable);
+      this.loadNews(newState.pageable);
    }
 
    onChangeSizePerPage(sizePerPage) {
@@ -63,10 +61,10 @@ class SpecialityViewListContainer extends Component {
          }
       });
       this.setState(newState);
-      this.loadSpeciality(newState.pageable);
+      this.loadNews(newState.pageable);
    }
 
-   breadcrumbs = [
+   specialityBreadcrumbs = [
       {
          home: true,
          link: '/',
@@ -74,36 +72,35 @@ class SpecialityViewListContainer extends Component {
       },
       {
          active: true,
-         text: 'Специальности'
+         text: 'Новости'
       }
    ];
 
    render() {
-      const {specialityList} = this.props;
+      const {newsList, noAction} = this.props;
       const {page, count} = this.state.pageable;
 
 
-      return (<WithBreadcrumbs breadcrumbs={this.breadcrumbs}>
-               <SpecialityTable
-                  specialityData={specialityList}
-                  page={page}
-                  count={count}
-                  onChangePage={this.onChangePage}
-                  onChangeSizePerPage={this.onChangeSizePerPage}/>
-            </WithBreadcrumbs>
+      return (<WithBreadcrumbs breadcrumbs={this.specialityBreadcrumbs}>
+            <NewsList newsList={newsList} page={page} count={count}
+                      onChangePage={this.onChangePage}
+                      onChangeSizePerPage={this.onChangeSizePerPage}
+                      noAction={noAction}
+            />
+         </WithBreadcrumbs>
       );
    }
 }
 
 const mapStateToProps = (state) => ({
-   specialityList: getSpecialityList(state)
+   newsList: getNewsList(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-   hospitalService: bindActionCreators(hospitalService, dispatch)
+   newsService: bindActionCreators(newsService, dispatch)
 });
 
 export default connect(
    mapStateToProps,
    mapDispatchToProps
-)(SpecialityViewListContainer);
+)(NewsViewListContainer);

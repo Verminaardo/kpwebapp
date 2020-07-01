@@ -1,23 +1,23 @@
 import {handleActions} from 'redux-actions';
-import {doctorList} from './actions';
+import {newsList} from './actions';
 
 const initialState = {
-   doctorList: [],
+   newsList: [],
    error: null,
    loading: false,
 };
 
 export default handleActions(
    {
-      [doctorList.load.request]: (state) => ({
+      [newsList.load.request]: (state) => ({
          ...state,
          loading: true
       }),
-      [doctorList.load.success]: (state, action) => ({
+      [newsList.load.success]: (state, action) => ({
          ...initialState,
          doctorList: action.payload
       }),
-      [doctorList.load.error]: (state, action) => ({
+      [newsList.load.error]: (state, action) => ({
          ...initialState,
          error: action.payload
       })

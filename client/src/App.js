@@ -1,14 +1,17 @@
 import React, { Component, Fragment } from 'react';
 import navListItems from './const/navbar/navListItems';
 
-import logoImg from './assets/img/horoLogo.png';
+import { getCurrentUser } from './common/store/selectors';
+import * as commonService from './common/store/service';
+
+import logoImg from './assets/img/logo.png';
 import Navbar from "./common/components/header/Navbar";
 import NotificationContainer from "./common/components/notifications/NotificationContainer";
-import {Route, Switch} from "react-router-dom";
-import SpecialityViewListContainer from "./hospital/containers/SpecialityViewListContainer";
+import {Route, Switch, withRouter} from "react-router-dom";
 import LandingPage from "./landingPage/LandingPage";
-import DoctorViewListContainer from "./hospital/containers/DoctorViewListContainer";
-import DoctorViewContainer from "./hospital/containers/DoctorViewContainer";
+import NewsViewListContainer from "./myblog/containers/NewsViewListContainer";
+import {bindActionCreators} from "redux";
+import {connect} from "react-redux";
 
 class App extends Component {
    constructor(props, context) {
@@ -28,17 +31,14 @@ class App extends Component {
             source: logoImg
          }
       };
-
+      debugger
       return (
          <div>
-            <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} />
+            <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} user={this.props.currentUser} />
             <Switch>
                <Fragment>
                   <Route exact path="/" component={LandingPage} />
-                  <Route exact path="/doctors" render={()=><DoctorViewListContainer filterable noAction defaultView/>}/>
-                  <Route exact path="/speciality" component={SpecialityViewListContainer} />
-                  <Route exact path="/speciality/:speciality/showDoctors" component={DoctorViewListContainer} />
-                  <Route exact path="/speciality/:speciality/showDoctors/:id/show/" component={DoctorViewContainer} />
+                  <Route exact path="/news" render={()=><NewsViewListContainer user={this.props.currentUser} noAction/>}/>
                </Fragment>
             </Switch>
             <NotificationContainer/>
@@ -47,4 +47,17 @@ class App extends Component {
    }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+   currentUser: getCurrentUser(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+   commonService: bindActionCreators(commonService, dispatch)
+});
+
+export default withRouter(
+   connect(
+      mapStateToProps,
+      mapDispatchToProps
+   )(App)
+);

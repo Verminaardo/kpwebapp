@@ -1,7 +1,8 @@
 import {notification} from './actions';
 
 export const notifyError = (error = {}, title, message) => {
-      return notification.add(title, message || error.message, 'error');
+   debugger
+      return notification.add(title, message || error.message[0].messages[0].message, 'error');
 };
 
 export const notifySuccess = (title, message) => notification.add(title, message, 'success');

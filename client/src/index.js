@@ -1,29 +1,29 @@
 import React from 'react';
 import {render} from 'react-dom';
-import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {BrowserRouter, Route} from 'react-router-dom';
-import {composeWithDevTools} from 'redux-devtools-extension';
-
-import logger from 'redux-logger';
-import {default as thunk} from 'redux-thunk';
 
 import App from './App';
-import rootReducer from './RootReducer';
+import {PersistGate} from 'redux-persist/integration/react'
+import configureStore from './reduxpersist/configureStore'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import "./assets/css/logo.css";
 import "./assets/css/profile.css";
+import "./assets/css/all.css";
+import '@trendmicro/react-modal/dist/react-modal.css';
 
-const middleware = process.env.NODE_ENV === 'production' ? [thunk] : [thunk, logger];
-
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(...middleware)));
+const config = configureStore()
+const store = config.store
+export const persistor = config.persistor
 
 render(
    <BrowserRouter>
       <Provider store={store}>
-         <Route path="/" component={App}/>
+         <PersistGate loading={null} persistor={persistor}>
+            <Route path="/" component={App}/>
+         </PersistGate>
       </Provider>
    </BrowserRouter>,
    document.getElementById('root')

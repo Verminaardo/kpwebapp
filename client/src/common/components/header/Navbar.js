@@ -3,8 +3,10 @@ import React from 'react';
 
 import NavbarButtons from './NavbarButtons';
 import Logo from './Logo';
+import LoginButton from "./buttons/LoginButton";
+import LogoutButton from "./buttons/LogoutButton";
 
-const Navbar = ({logo, navbarTabs}) => (
+const Navbar = ({logo, navbarTabs, user = null}) => (
    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
               aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -12,6 +14,21 @@ const Navbar = ({logo, navbarTabs}) => (
       </button>
       <Logo image={logo.image} text={logo.text}/>
       <NavbarButtons navbarTabs={navbarTabs}/>
+
+      { !user &&
+         <LoginButton text="Войти" />
+      }
+
+      {
+         user &&
+            `Здравствуйте ${user.username}`
+      }
+
+      {
+         user &&
+         <LogoutButton/>
+      }
+
    </nav>
 );
 
