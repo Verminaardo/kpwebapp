@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
 const NewsListWithPagination = ({dataList, paginationRow, emptyText}) => {
    const newsList = [];
@@ -7,7 +8,7 @@ const NewsListWithPagination = ({dataList, paginationRow, emptyText}) => {
       for (let i = 0; i < dataList.length; i++) {
          let item = dataList[i]
          newsList.push(
-            <div className="mb-5 rounded-lg border-danger border p-3 justify-content-end align-items-end">
+            <div className="mb-5 rounded-lg border-primary border p-3 justify-content-end align-items-end">
                <h2>{item.Header}</h2>
                {item.PreviewImage && <div className="d-flex justify-content-center m-5"> <img src={item.PreviewImage.url} alt="post img" width="512"
                                                                          className="img-responsive thumb margin10 img-thumbnail"/> </div>}
@@ -18,7 +19,7 @@ const NewsListWithPagination = ({dataList, paginationRow, emptyText}) => {
                </article>
                <hr className="m-3"/>
                <div className="d-flex flex-row-reverse mr-5">
-               <a className="btn btn-success" href={`/news/${item.id}`}>Подробнее...</a>
+               <Link className="btn btn-outline-primary" to={`/news/${item.id}`}>Подробнее...</Link>
                </div>
             </div>)
       }
