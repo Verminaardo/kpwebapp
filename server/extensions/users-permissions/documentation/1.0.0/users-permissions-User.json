@@ -1245,23 +1245,26 @@
               }
             }
           },
-          "my_commentary": {
-            "required": [
-              "id",
-              "Text"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "Text": {
-                "type": "string"
-              },
-              "my_new": {
-                "type": "string"
-              },
-              "user": {
-                "type": "string"
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "Text"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Text": {
+                  "type": "string"
+                },
+                "my_new": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -1302,8 +1305,11 @@
           "role": {
             "type": "string"
           },
-          "my_commentary": {
-            "type": "string"
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

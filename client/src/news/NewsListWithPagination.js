@@ -7,10 +7,10 @@ const NewsListWithPagination = ({dataList, paginationRow, emptyText}) => {
       for (let i = 0; i < dataList.length; i++) {
          let item = dataList[i]
          newsList.push(
-            <div className="rounded-lg border-danger border p-3 justify-content-end align-items-end">
+            <div className="mb-5 rounded-lg border-danger border p-3 justify-content-end align-items-end">
                <h1>{item.Header}</h1>
-               {item.PreviewImage && <img src={item.PreviewImage} alt="post img"
-                                          className="pull-left img-responsive thumb margin10 img-thumbnail"/>}
+               {item.PreviewImage && <div className="d-flex justify-content-center m-5"> <img src={item.PreviewImage.url} alt="post img" width="512"
+                                                                         className="img-responsive thumb margin10 img-thumbnail"/> </div>}
                <article>
                   <p>
                      {item.Description}

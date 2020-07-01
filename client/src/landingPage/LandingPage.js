@@ -1,7 +1,7 @@
 import React from "react";
 
 const LandingPage = () =>
-   <div className="jumbotron bg-white ml-3 mr-5">
+   <div className="jumbotron bg-white">
       <h1 className="display-4">Myblog - курсовой проект по дисциплине "разработка вебприложений".</h1>
       <p className="lead">Главная страница.</p>
       <hr className="my-4"/>

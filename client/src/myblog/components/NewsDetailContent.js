@@ -7,6 +7,7 @@ import {connect} from "react-redux";
 import {getNewsDetails, getSendCommentSuccess} from "../store/selectors";
 import {getCurrentUser, getJwt, isAuth} from "../../common/store/selectors";
 import {Button} from "../../modal/buttons";
+import ReactMarkdown from "react-markdown";
 
 class NewsDetailContent extends Component {
 
@@ -65,29 +66,27 @@ class NewsDetailContent extends Component {
                </div>)
          }
       } else {
-         return (
-            <div className="row">
+         commentaryList.push(
+            <div className="row m-4">
                <div className="col-md-8 offset-md-2 text-center">
                   <h3>{"Комментариев нет!"}</h3>
                </div>
             </div>
-         );
+         )
       }
-      debugger;
+
       return (
          <Fragment>
             <div className="rounded-lg border-danger border p-3 justify-content-end align-items-end">
                <h1>{newsDetail.Header}</h1>
-               {newsDetail.PreviewImage && <img src={newsDetail.PreviewImage} alt="post img"
-                                                className="pull-left img-responsive thumb margin10 img-thumbnail"/>}
+               {newsDetail.PreviewImage && <div className="d-flex justify-content-center m-5"> <img src={newsDetail.PreviewImage.url} alt="post img" width="1024"
+                                                                                                    className="img-responsive thumb margin10 img-thumbnail"/> </div>}
                <article>
                   <p className="small text-secondary">
                      {newsDetail.Description}
                   </p>
                   <hr className="m-3"/>
-                  <p>
-                     {newsDetail.Content}
-                  </p>
+                  <ReactMarkdown source={newsDetail.Content} />
                </article>
             </div>
             {commentaryList}

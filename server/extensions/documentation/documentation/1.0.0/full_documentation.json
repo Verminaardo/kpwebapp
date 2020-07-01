@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "07/02/2020 1:11:05 AM"
+    "x-generation-date": "07/02/2020 1:39:55 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3840,8 +3840,11 @@
               "role": {
                 "type": "string"
               },
-              "my_commentary": {
-                "type": "string"
+              "my_commentaries": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -4106,8 +4109,11 @@
                 "role": {
                   "type": "string"
                 },
-                "my_commentary": {
-                  "type": "string"
+                "my_commentaries": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
                 }
               }
             }
@@ -4204,23 +4210,26 @@
               }
             }
           },
-          "my_commentary": {
-            "required": [
-              "id",
-              "Text"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "Text": {
-                "type": "string"
-              },
-              "my_new": {
-                "type": "string"
-              },
-              "user": {
-                "type": "string"
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "Text"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Text": {
+                  "type": "string"
+                },
+                "my_new": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
               }
             }
           }
@@ -4261,8 +4270,11 @@
           "role": {
             "type": "string"
           },
-          "my_commentary": {
-            "type": "string"
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },

@@ -21,7 +21,7 @@
     "user": {
       "plugin": "users-permissions",
       "model": "user",
-      "via": "my_commentary"
+      "via": "my_commentaries"
     }
   }
 }

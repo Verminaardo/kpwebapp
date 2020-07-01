@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, {Component, Fragment} from 'react';
 import navListItems from './const/navbar/navListItems';
 
-import { getCurrentUser } from './common/store/selectors';
+import {getCurrentUser, isAuth} from './common/store/selectors';
 import * as commonService from './common/store/service';
 
 import logoImg from './assets/img/logo.png';
@@ -13,6 +13,7 @@ import NewsViewListContainer from "./myblog/containers/NewsViewListContainer";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 import NewsDetail from "./myblog/containers/NewsDetail";
+import ProfileComponent from "./myblog/components/ProfileComponent";
 
 class App extends Component {
    constructor(props, context) {
@@ -33,16 +34,30 @@ class App extends Component {
          }
       };
 
+      const {currentUser} = this.props;
+
       return (
          <div>
-            <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} user={this.props.currentUser} />
+            <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} user={this.props.currentUser}/>
             <Switch>
                <Fragment>
-                  <Route exact path="/" component={LandingPage} />
-                  <Route exact path="/news" render={() => <NewsViewListContainer user={this.props.currentUser}/>}/>
-                  <Route path="/news/:newsDetailId"
-                     component={NewsDetail}
-                  />
+                  <div className="row">
+                     <div className="col-md-8 ml-5 mr-5">
+                        <Route exact path="/" component={LandingPage}/>
+                        <Route exact path="/news"
+                               render={() => <NewsViewListContainer user={this.props.currentUser}/>}/>
+                        <Route path="/news/:newsDetailId"
+                               component={NewsDetail}
+                        />
+                     </div>
+                        {this.props.isAuth &&
+                        <ProfileComponent
+                           id={currentUser.id}
+                           username={currentUser.username}
+                           email={currentUser.email}
+                           my_commentaries={currentUser.my_commentaries}/>
+                        }
+                  </div>
                </Fragment>
             </Switch>
             <NotificationContainer/>
@@ -52,7 +67,8 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => ({
-   currentUser: getCurrentUser(state)
+   currentUser: getCurrentUser(state),
+   isAuth: isAuth(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

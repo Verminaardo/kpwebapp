@@ -42,14 +42,12 @@ class NewsDetail extends Component {
 
    render() {
       const {newsDetail} = this.props;
-
+      debugger
       return (<WithBreadcrumbs breadcrumbs={this.specialityBreadcrumbs}>
-            <table className="col-md-10 m-5 center-block">
                <NewsDetailContent
                   newsDetail={newsDetail}
                   needToUpdate={() => this.loadNews(this.props.match.params.newsDetailId)}
                />
-            </table>
          </WithBreadcrumbs>
       );
    }

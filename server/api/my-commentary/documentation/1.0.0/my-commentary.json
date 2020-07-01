@@ -605,8 +605,11 @@
               "role": {
                 "type": "string"
               },
-              "my_commentary": {
-                "type": "string"
+              "my_commentaries": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
               }
             }
           }
