@@ -15,7 +15,6 @@ class NewsDetail extends Component {
    }
 
    componentDidMount() {
-      debugger
       this.loadNews(this.props.match.params.newsDetailId);
    }
 
@@ -48,6 +47,7 @@ class NewsDetail extends Component {
             <table className="col-md-10 m-5 center-block">
                <NewsDetailContent
                   newsDetail={newsDetail}
+                  needToUpdate={() => this.loadNews(this.props.match.params.newsDetailId)}
                />
             </table>
          </WithBreadcrumbs>

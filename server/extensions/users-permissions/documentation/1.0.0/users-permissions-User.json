@@ -1244,6 +1244,26 @@
                 }
               }
             }
+          },
+          "my_commentary": {
+            "required": [
+              "id",
+              "Text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              },
+              "my_new": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -1280,6 +1300,9 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "my_commentary": {
             "type": "string"
           }
         }

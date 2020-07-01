@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsListWithPagination = ({dataList, paginationRow, emptyText}) => {
    const newsList = [];
-   debugger
+
    if (dataList && dataList.length) {
       for (let i = 0; i < dataList.length; i++) {
          let item = dataList[i]

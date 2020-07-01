@@ -88,7 +88,7 @@ class NewsViewListContainer extends Component {
       debugger
 
       return (<WithBreadcrumbs breadcrumbs={this.specialityBreadcrumbs}>
-         <table className="col-md-10 m-5 center-block">
+         <table className="col-md-8 m-5 center-block">
             <NewsList newsList={newsList} page={page} count={count}
                       onChangePage={this.onChangePage}
                       onChangeSizePerPage={this.onChangeSizePerPage}
@@ -96,6 +96,7 @@ class NewsViewListContainer extends Component {
                       newsListCount={newsListCount}
             />
          </table>
+
          </WithBreadcrumbs>
       );
    }

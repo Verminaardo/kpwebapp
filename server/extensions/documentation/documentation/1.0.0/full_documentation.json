@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "06/19/2020 1:50:22 AM"
+    "x-generation-date": "07/02/2020 1:11:05 AM"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3774,6 +3774,76 @@
           "Text": {
             "type": "string",
             "maxLength": 300
+          },
+          "my_new": {
+            "required": [
+              "id",
+              "Header",
+              "Description",
+              "Content"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Header": {
+                "type": "string"
+              },
+              "PreviewImage": {
+                "type": "string"
+              },
+              "Description": {
+                "type": "string"
+              },
+              "Content": {
+                "type": "string"
+              },
+              "my_commentaries": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "user": {
+            "required": [
+              "id",
+              "username",
+              "email"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "username": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "provider": {
+                "type": "string"
+              },
+              "password": {
+                "type": "string"
+              },
+              "resetPasswordToken": {
+                "type": "string"
+              },
+              "confirmed": {
+                "type": "boolean"
+              },
+              "blocked": {
+                "type": "boolean"
+              },
+              "role": {
+                "type": "string"
+              },
+              "my_commentary": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -3785,6 +3855,12 @@
           "Text": {
             "type": "string",
             "maxLength": 300
+          },
+          "my_new": {
+            "type": "string"
+          },
+          "user": {
+            "type": "string"
           }
         }
       },
@@ -3869,6 +3945,29 @@
           "Content": {
             "type": "string",
             "minLength": 10
+          },
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "Text"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Text": {
+                  "type": "string"
+                },
+                "my_new": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -3888,6 +3987,12 @@
           "Content": {
             "type": "string",
             "minLength": 10
+          },
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
@@ -4000,6 +4105,9 @@
                 },
                 "role": {
                   "type": "string"
+                },
+                "my_commentary": {
+                  "type": "string"
                 }
               }
             }
@@ -4095,6 +4203,26 @@
                 }
               }
             }
+          },
+          "my_commentary": {
+            "required": [
+              "id",
+              "Text"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "Text": {
+                "type": "string"
+              },
+              "my_new": {
+                "type": "string"
+              },
+              "user": {
+                "type": "string"
+              }
+            }
           }
         }
       },
@@ -4131,6 +4259,9 @@
             "default": false
           },
           "role": {
+            "type": "string"
+          },
+          "my_commentary": {
             "type": "string"
           }
         }

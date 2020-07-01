@@ -608,6 +608,29 @@
           "Content": {
             "type": "string",
             "minLength": 10
+          },
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "required": [
+                "id",
+                "Text"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "Text": {
+                  "type": "string"
+                },
+                "my_new": {
+                  "type": "string"
+                },
+                "user": {
+                  "type": "string"
+                }
+              }
+            }
           }
         }
       },
@@ -627,6 +650,12 @@
           "Content": {
             "type": "string",
             "minLength": 10
+          },
+          "my_commentaries": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         }
       }

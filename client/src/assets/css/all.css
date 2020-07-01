@@ -4,3 +4,17 @@
 }
 
 .blogShort{ border-bottom:1px solid #ddd;}
+
+.comment{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
+.head{
+    margin-bottom: 10px;
+}
+
+.user{
+    margin-right: 10px;
+}

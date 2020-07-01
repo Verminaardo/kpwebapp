@@ -9,7 +9,8 @@ import logger from "redux-logger";
 
 const persistConfig = {
    key: 'root',
-   storage
+   storage: storage,
+   blacklist: ['myBlogStore']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

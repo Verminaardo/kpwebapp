@@ -13,6 +13,15 @@
       "type": "richtext",
       "required": true,
       "maxLength": 300
+    },
+    "my_new": {
+      "model": "my-news",
+      "via": "my_commentaries"
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "my_commentary"
     }
   }
 }

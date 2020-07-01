@@ -31,6 +31,10 @@
       "type": "richtext",
       "required": true,
       "minLength": 10
+    },
+    "my_commentaries": {
+      "via": "my_new",
+      "collection": "my-commentary"
     }
   }
 }

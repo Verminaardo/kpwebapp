@@ -608,6 +608,9 @@
                 },
                 "role": {
                   "type": "string"
+                },
+                "my_commentary": {
+                  "type": "string"
                 }
               }
             }

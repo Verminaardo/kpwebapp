@@ -31,7 +31,11 @@ export default (baseUrl) => (params) =>
       fetch(baseUrl + (params.url || ''), {
          method: params.type || 'POST',
          body: params.uploadFile ? params.data : JSON.stringify(params.data),
-         headers: !params.uploadFile && defaultContentType,
+         headers: !!params.headers ?
+            {
+               'Content-Type': 'application/json; charset=utf-8',
+               'Authorization': params.headers.Authorization
+            } : !params.uploadFile && defaultContentType,
          credentials: params.credentials || 'same-origin'
       })
          .then((response) => {

@@ -26,7 +26,7 @@ class RegistrationButton extends Component {
 
       return (
          <Fragment>
-            <button type="button" className="btn btn-danger mr-5"
+            <button type="button" className="btn btn-primary mr-5"
                     onClick={() => this.changeModalVisibility(true)}>
                {text}
             </button>
