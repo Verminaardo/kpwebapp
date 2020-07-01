@@ -5,6 +5,7 @@ import NavbarButtons from './NavbarButtons';
 import Logo from './Logo';
 import LoginButton from "./buttons/LoginButton";
 import LogoutButton from "./buttons/LogoutButton";
+import RegistrationButton from "./buttons/RegistrationButton";
 
 const Navbar = ({logo, navbarTabs, user = null}) => (
    <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
@@ -15,13 +16,17 @@ const Navbar = ({logo, navbarTabs, user = null}) => (
       <Logo image={logo.image} text={logo.text}/>
       <NavbarButtons navbarTabs={navbarTabs}/>
 
-      { !user &&
-         <LoginButton text="Войти" />
+      {!user &&
+      <LoginButton text="Войти"/>
+      }
+
+      {!user &&
+      <RegistrationButton text="Зарегистрироваться"/>
       }
 
       {
          user &&
-            `Здравствуйте ${user.username}`
+         `Здравствуйте ${user.username}`
       }
 
       {
