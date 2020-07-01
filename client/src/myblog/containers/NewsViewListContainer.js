@@ -1,4 +1,4 @@
-import { getNewsList } from '../store/selectors';
+import {getNewsList, getNewsListCount} from '../store/selectors';
 
 import React, { Component } from 'react';
 import WithBreadcrumbs from "../../common/components/breadcrumbs/WithBreadcrumbs";
@@ -22,11 +22,17 @@ class NewsViewListContainer extends Component {
       this.onChangePage = this.onChangePage.bind(this);
       this.onChangeSizePerPage = this.onChangeSizePerPage.bind(this);
       this.loadNews = this.loadNews.bind(this);
+      this.loadNewsCount = this.loadNewsCount.bind(this)
    }
 
    componentDidMount() {
       this.loadNews(this.state.pageable);
-      this.loadNews();
+      this.loadNewsCount()
+   }
+
+   loadNewsCount() {
+      const { requestNewsListCount } = this.props.newsService;
+      requestNewsListCount();
    }
 
    loadNews(pageable) {
@@ -77,16 +83,19 @@ class NewsViewListContainer extends Component {
    ];
 
    render() {
-      const {newsList, noAction} = this.props;
+      const {newsList, noAction, newsListCount} = this.props;
       const {page, count} = this.state.pageable;
-
+      debugger
 
       return (<WithBreadcrumbs breadcrumbs={this.specialityBreadcrumbs}>
+         <table className="col-md-10 m-5 center-block">
             <NewsList newsList={newsList} page={page} count={count}
                       onChangePage={this.onChangePage}
                       onChangeSizePerPage={this.onChangeSizePerPage}
                       noAction={noAction}
+                      newsListCount={newsListCount}
             />
+         </table>
          </WithBreadcrumbs>
       );
    }
@@ -94,6 +103,7 @@ class NewsViewListContainer extends Component {
 
 const mapStateToProps = (state) => ({
    newsList: getNewsList(state),
+   newsListCount: getNewsListCount(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

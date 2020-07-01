@@ -31,14 +31,14 @@ class App extends Component {
             source: logoImg
          }
       };
-      debugger
+
       return (
          <div>
             <Navbar logo={logo} navbarTabs={this.setActiveItem(navListItems)} user={this.props.currentUser} />
             <Switch>
                <Fragment>
                   <Route exact path="/" component={LandingPage} />
-                  <Route exact path="/news" render={()=><NewsViewListContainer user={this.props.currentUser} noAction/>}/>
+                  <Route exact path="/news" render={() => <NewsViewListContainer user={this.props.currentUser}/>}/>
                </Fragment>
             </Switch>
             <NotificationContainer/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import PaginationRow from "../../table/elements/pagination/pagination-row/PaginationRow";
-import OneNews from "../../news/OneNews";
+import NewsListWithPagination from "../../news/NewsListWithPagination";
 
 const NewsList = (props) => {
 
@@ -10,13 +10,13 @@ const NewsList = (props) => {
          onChangePage={props.onChangePage}
          onChangeSizePerPage={props.onChangeSizePerPage}
          sizePerPage={props.count}
-         itemCount={props.newsList ? props.newsList.totalElements : 0}
+         itemCount={props.newsListCount ? props.newsListCount : 0}
       />
    );
 
    return (
-      <OneNews
-         dataList={props.newsList ? props.newsList.content : []}
+      <NewsListWithPagination
+         dataList={props.newsList ? props.newsList : []}
          paginationRow={pagination}
          emptyText="Новостей нет!"
       />

@@ -6,3 +6,9 @@ export const {newsList} = createActions({
       ...loadActions
    }
 });
+
+export const {newsListCount} = createActions({
+   NEWS_LIST_COUNT: {
+      ...loadActions
+   }
+});

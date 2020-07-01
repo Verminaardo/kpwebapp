@@ -14,7 +14,6 @@ class RegistrationButton extends Component {
    }
 
    changeModalVisibility(isVisible) {
-      debugger
       const newState = update(this.state, {
          showModal: {$set: isVisible}
       });

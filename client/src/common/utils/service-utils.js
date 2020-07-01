@@ -25,10 +25,15 @@ export const createPageableRequestUrl = (pageable = {}, url = '') => {
       return url;
    }
 
-   url += `?page=${pageable.page}`;
-   if (pageable.count) {
-      url += `&size=${pageable.count}`;
+   if (pageable.page !== 1) {
+      url += `?_start=${(pageable.page-1)*pageable.count}`;
+      if (pageable.count) {
+         url += `&_limit=${pageable.count}`;
+      }
+   } else if (pageable.count) {
+      url += `?_limit=${pageable.count}`;
    }
+
    if (pageable.filter) {
       for (const key in pageable.filter) {
          if (pageable.filter[key]) {
